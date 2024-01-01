@@ -1,0 +1,20 @@
+close_on_action: false
+
+calculators:
+  - command: qalc {input}
+    action: echo "{data}" | pbcopy
+
+searches:
+  - command: "mdfind kMDItemContentType == com.apple.application-* -attr kMDItemDisplayName | grep --invert-match Utilities | grep --invert-match Library | sed s/...kMDItemDisplayName.=./:/"
+    format: "(?P<data>.+):(?P<label>.+)"
+    action: "open {data}"
+    labels:
+      title: "\ue713 {label}"
+      description: "{data}"
+  - command: "mdfind kMDItemContentType == com.apple.addressbook.person -attr kMDItemDisplayName | sed s/...kMDItemDisplayName.=./!/"
+    format: "(?P<data>.+)!(?P<label>.+)"
+    action: "open {data}"
+    labels:
+      title: "\uf2c0 {label}"
+      description: ""
+

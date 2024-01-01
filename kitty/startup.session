@@ -1,0 +1,20 @@
+# Set the layout for the current tab
+layout fat:bias=40;full_size=1;mirrored=true
+
+# Set the working directory for windows in the current tab
+cd ~
+
+# File Manager - Yazi
+launch yazi
+
+# App Launcher - Lit; focused by default
+# Clearing before running helps prevent reflow artifacts in Kitty terminal
+launch zsh -c "clear; lit"
+focus
+
+# News - hackernews_tui
+launch zsh -c "~/bin/hackernews_tui"
+resize_window wider 10
+
+# Shell - ZSH prompt with neofetch header
+launch zsh -c "clear; neofetch ; zsh"
